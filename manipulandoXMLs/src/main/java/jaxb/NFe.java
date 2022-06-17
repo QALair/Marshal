@@ -3,39 +3,33 @@ package jaxb;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="NFe",propOrder={"infNFe","Signature"},namespace="http://www.portalfiscal.inf.br/nfe")
+@XmlType(name="NFe",propOrder={"infNFe","Signature"})
+@XmlRootElement(name="NFe")
 public class NFe{
     @XmlElement(name="infNFe")
     private InfNfe infNFe;
     @XmlElement(name="Signature")
     private String Signature;
-    @XmlAttribute(name="xmlns")
-    private String xmlns;
 
 
     public InfNfe getinfNFe() {
-        return infNFe;
+        return this.infNFe;
     }
     public void setInfNFE(InfNfe infNFe) {
         this.infNFe = infNFe;
     }
-    public String getSignature() {
-        return this.Signature;
-    }
+    public String getSignature() {return Signature;}
     public void setSignature(String signature) {
         this.Signature = signature;
     }
 
 
-    public String getXmlns() {return this.xmlns;    }
-    public void setXmlns(String xmlns) {this.xmlns = xmlns;    }
-
-    public NFe(String xmlns, InfNfe infNFe){
-        this.xmlns  = xmlns;
+    public NFe(InfNfe infNFe){
+        super();
         this.infNFe = infNFe;
     }
-
     public NFe(){
+        super();
     }
 
     @Override
@@ -43,7 +37,6 @@ public class NFe{
         return "NFe{" +
                 "infNFe=" + infNFe +
                 ", Signature='" + Signature + '\'' +
-                ", xmlns='" + xmlns + '\'' +
                 '}';
     }
 }

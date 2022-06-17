@@ -12,8 +12,8 @@ public class serializacao {
         Marshaller marshaller = context.createMarshaller();
         Emit emitTeste = new Emit("03.402.181/0010-61", "Alguma razao social");
         InfNfe infNfeTeste = new InfNfe("4.0", emitTeste);
-        NFe nfObj = new NFe("http://www.portalfiscal.inf.br/nfe",infNfeTeste);
-        NfeProc nfeProc = new NfeProc(nfObj);
+        NFe nfObj = new NFe(infNfeTeste);
+        NfeProc nfeProc = new NfeProc("2.0", nfObj);
 
 
 

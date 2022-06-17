@@ -20,10 +20,12 @@ public class Emit {
     public void setxNome(String xNome) {this.xNome = xNome;}
 
     public Emit(String CNPJ, String xNome){
+        super();
         this.CNPJ = CNPJ;
         this.xNome = xNome;
     }
     public Emit() {
+        super();
     }
 
     @Override
