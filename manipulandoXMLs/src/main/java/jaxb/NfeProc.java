@@ -28,6 +28,8 @@ public class NfeProc {
     }
     public NfeProc(){
     }
+
+    //TODO: Remove all unecessary comments
     //public NfeProc(NFe nFe){
     //    this.nFe = nFe;
     //}
