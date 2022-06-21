@@ -34,8 +34,12 @@
             <artifactId>javassist</artifactId>
             <version>3.25.0-GA</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jbehave/jbehave-core -->
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <version>5.0</version>
+        </dependency>
     </dependencies>
-
-
 
 </project>

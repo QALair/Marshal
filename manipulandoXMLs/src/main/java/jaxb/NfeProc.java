@@ -1,5 +1,7 @@
 package jaxb;
 
+import org.jbehave.core.annotations.When;
+
 import javax.xml.bind.annotation.*;
 
 
