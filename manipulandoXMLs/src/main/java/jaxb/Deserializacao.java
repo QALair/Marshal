@@ -1,15 +1,28 @@
 package jaxb;
 
 import org.jbehave.core.annotations.*;
+import org.jbehave.core.configuration.Keywords;
+import org.jbehave.core.io.StoryFinder;
+import org.jbehave.core.junit.JUnitStories;
+import org.jbehave.core.parsers.StepPatternParser;
+import org.jbehave.core.steps.*;
+import org.jbehave.core.steps.context.StepsContext;
+import org.junit.Assert;
+import org.junit.Test;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.lang.reflect.Method;
+import java.util.List;
 
-public class Deserializacao {
-    @Given("A existent receipt, there must be the tag CNPJ")
-    public String deserializacao() throws JAXBException, FileNotFoundException {
+import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
+
+public class Deserializacao extends Steps {
+    @Given("An existent receipt, there must be the tag CNPJ")
+    public void givenAnExistentReceiptThereMustBeTheTagCNPJ() throws JAXBException, FileNotFoundException {
         JAXBContext ctEmit = JAXBContext.newInstance(NfeProc.class);
         Unmarshaller unmarshaller = ctEmit.createUnmarshaller();
 
@@ -20,6 +33,8 @@ public class Deserializacao {
 
         NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("D:\\nota_teste.xml"));
 
-        return nfeProc.getnFe().getinfNFe().getEmit().getCNPJ();
+        Assert.assertTrue(nfeProc.getnFe().getinfNFe().getEmit().getCNPJ() != null);
+
     }
+
 }
