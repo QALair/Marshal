@@ -1,5 +1,6 @@
 package jaxb;
 
+import jaxb.repository.EmitRepository;
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.steps.*;
 import org.junit.Assert;
@@ -9,8 +10,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
-import org.springframework.*;
 
 
 public class Deserializacao extends Steps {
@@ -26,8 +25,8 @@ public class Deserializacao extends Steps {
 
         NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("D:\\nota_teste.xml"));
 
-        //TODO: colocar o save aqui pro spring falar com o h2
         Assert.assertNotNull(nfeProc.getnFe().getinfNFe().getEmit().getCNPJ());
+
     }
 
 }

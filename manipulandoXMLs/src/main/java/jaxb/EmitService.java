@@ -15,13 +15,17 @@ public class EmitService implements ApplicationRunner {
 
     private final EmitRepository repository;
 
-    public EmitService (EmitRepository repository){
+    public EmitService(EmitRepository repository) {
         this.repository = repository;
     }
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Emit emit = new Emit("01.031.451/0001-71","Nome ficticio");
-        LOGGER.log(Level.INFO,"Persist");
+        Emit emit = Emit.builder()
+                .CNPJ("72.186.158/0001-09")
+                .xNome("Razao Social aleatoria")
+                .build();
+        LOGGER.log(Level.INFO, "Persist");
         repository.save(emit);
         LOGGER.log(Level.INFO, emit.toString());
 
@@ -29,22 +33,16 @@ public class EmitService implements ApplicationRunner {
         repository.findById(Math.toIntExact(emit.getId())).ifPresent(it -> {
             LOGGER.log(Level.INFO, emit.toString());
         });
-        Emit emit2 = new Emit("01.031.451/0001-72","Nome ficticio2");
+        Emit emit2 = Emit.builder()
+                .CNPJ("15.947.410/0001-11")
+                .xNome("Razao Social não tão aleatória")
+                .build();
 
         LOGGER.log(Level.INFO, "Persist");
         repository.save(emit2);
         LOGGER.log(Level.INFO, emit2.toString());
 
-        emit2.setxNome("Nome ficticio3");
-        LOGGER.log(Level.INFO, "Update");
-        repository.save(emit2);
-        LOGGER.log(Level.INFO, emit2.toString());
-
         LOGGER.log(Level.INFO, "FindAll");
         repository.findAll().forEach(it -> LOGGER.log(Level.INFO, it.toString()));
-
-        LOGGER.log(Level.INFO, "Delete");
-        repository.delete(emit2);
-        LOGGER.log(Level.INFO, emit2.toString());
     }
 }
