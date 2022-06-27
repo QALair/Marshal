@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.context.*;
 
+import javax.xml.bind.JAXBException;
+
 @ComponentScan(basePackageClasses={Emit.class, EmitRepository.class})
 @SpringBootApplication
 public class Main {
@@ -27,11 +29,14 @@ public class Main {
 //    }
     private String firstPage;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JAXBException {
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(Main.class, args);
 
         //Beans
         EmitRepository emitRepository = configurableApplicationContext.getBean(EmitRepository.class);
 
+
+        Serializacao objSer = new Serializacao(emitRepository);
+        objSer.buildMarshaller(emitRepository);
     }
 }

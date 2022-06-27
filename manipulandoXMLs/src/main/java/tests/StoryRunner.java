@@ -33,8 +33,6 @@ public class StoryRunner extends ConfigurableEmbedder {
         embedder = configuredEmbedder();
         embedder.configuration();
 
-        //String storyPath="Stories/imprimeAlgoNaTela.story";
-        //embedder.runStoriesAsPaths(Collections.singletonList(storyPath));
         embedder.runStoriesAsPaths(new StoryFinder().findPaths(codeLocationFromClass(this.getClass()).getFile(),
                 asList("**/*.story"), asList("")));
     }
