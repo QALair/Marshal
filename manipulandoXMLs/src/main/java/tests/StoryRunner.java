@@ -15,11 +15,15 @@ import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.junit.Test;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 import static java.util.Arrays.asList;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 
+@RestController
+@RequestMapping("/StoryRunner")
 public class StoryRunner extends ConfigurableEmbedder {
     public Embedder embedder;
 
@@ -41,7 +45,6 @@ public class StoryRunner extends ConfigurableEmbedder {
 
     @Override
     public InjectableStepsFactory stepsFactory(){
-
         return new InstanceStepsFactory(configuration(), new Deserializacao(), new ImprimoAlgo());
     }
 

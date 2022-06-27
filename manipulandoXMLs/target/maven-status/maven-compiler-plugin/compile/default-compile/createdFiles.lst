@@ -1,0 +1,5 @@
+tests\TestesNotaEmpresa.class
+tests\StoryRunner.class
+jaxb\Emit.class
+jaxb\repository\EmitRepository.class
+jaxb\EmitService.class

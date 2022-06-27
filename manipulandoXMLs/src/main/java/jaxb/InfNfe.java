@@ -1,5 +1,7 @@
 package jaxb;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -32,7 +34,7 @@ public class InfNfe{
     public void setVersao(String versao) {
         this.versao = versao;
     }
-
+    @Autowired
     public InfNfe(String versao, Emit emit){
       super();
       this.versao = versao;
