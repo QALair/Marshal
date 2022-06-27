@@ -1,6 +1,7 @@
 package jaxb;
 
 import org.jbehave.core.annotations.When;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.annotation.*;
 
@@ -22,6 +23,7 @@ public class NfeProc {
     public NFe getnFe() {return this.nFe;}
     public void setnFe(NFe nFe) {this.nFe = nFe;}
 
+    @Autowired
     public NfeProc(String versao,NFe nFe){
         this.versao = versao;
         this.nFe = nFe;

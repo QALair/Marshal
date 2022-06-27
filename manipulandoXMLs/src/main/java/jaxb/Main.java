@@ -1,25 +1,37 @@
 package jaxb;
 
-import org.jbehave.core.io.StoryFinder;
-import org.jbehave.core.junit.JUnitStories;
-import org.junit.Test;
-import tests.TestesNotaEmpresa;
-import javax.xml.bind.JAXBException;
-import java.io.FileNotFoundException;
-import java.util.List;
+import jaxb.repository.EmitRepository;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.context.*;
 
-import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
-
+@ComponentScan(basePackageClasses={Emit.class, EmitRepository.class})
+@SpringBootApplication
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException, JAXBException {
-        TestesNotaEmpresa testesNotaEmpresa = new TestesNotaEmpresa();
-        testesNotaEmpresa.validaSeExisteEmpresaPeloCnpj();
-        Deserializacao testeDes = new Deserializacao();
-        ImprimoAlgo imprimir = new ImprimoAlgo();
+    //    public static void main(String[] args) throws FileNotFoundException, JAXBException {
+//        TestesNotaEmpresa testesNotaEmpresa = new TestesNotaEmpresa();
+//        testesNotaEmpresa.validaSeExisteEmpresaPeloCnpj();
+//        Deserializacao testeDes = new Deserializacao();
+//        ImprimoAlgo imprimir = new ImprimoAlgo();
+//
+//        testeDes.givenAnExistentReceiptThereMustBeTheTagCNPJ();
+//        imprimir.givenEuPossoImprimir();
+//
+//
+//        SpringApplication.run(Main.class, args);
+//    }
+    private String firstPage;
 
-        testeDes.givenAnExistentReceiptThereMustBeTheTagCNPJ();
-        imprimir.givenEuPossoImprimir();
+    public static void main(String[] args) {
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(Main.class, args);
+
+        //Beans
+        EmitRepository emitRepository = configurableApplicationContext.getBean(EmitRepository.class);
+
     }
-
 }

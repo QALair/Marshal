@@ -1,5 +1,7 @@
 package jaxb;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -23,7 +25,7 @@ public class NFe{
         this.Signature = signature;
     }
 
-
+    @Autowired
     public NFe(InfNfe infNFe){
         super();
         this.infNFe = infNFe;
