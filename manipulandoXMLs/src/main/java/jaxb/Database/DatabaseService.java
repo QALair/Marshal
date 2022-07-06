@@ -1,2 +1,6 @@
-package jaxb.Database;public class DatabaseService {
+package jaxb.Database;
+
+public abstract class DatabaseService {
+
+
 }
