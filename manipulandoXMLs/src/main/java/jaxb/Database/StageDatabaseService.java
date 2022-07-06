@@ -1,2 +1,6 @@
-package jaxb.Database;public class StageDatabaseService {
+package jaxb.Database;
+
+public class StageDatabaseService extends DatabaseService {
+
+
 }

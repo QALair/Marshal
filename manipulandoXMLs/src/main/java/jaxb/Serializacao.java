@@ -26,7 +26,7 @@ public class Serializacao {
         NFe nfObj = new NFe(infNfeTeste);
         NfeProc nfeProc = new NfeProc("2.0", nfObj);
 
-        marshaller.marshal(nfeProc, new File("D:\\nota_teste.xml"));
+        marshaller.marshal(nfeProc, new File("nota.xml"));
 
     }
 }

@@ -23,7 +23,7 @@ public class Deserializacao extends Steps {
          caminho da nota marshalled: D:\nota_teste.xml
         */
 
-        NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("D:\\nota_teste.xml"));
+        NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("nota.xml"));
 
         Assert.assertNotNull(nfeProc.getnFe().getinfNFe().getEmit().getCNPJ());
 
