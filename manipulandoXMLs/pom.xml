@@ -15,6 +15,11 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <jbehave.skip.tests>false</jbehave.skip.tests>
+        <meta.filter>!skip</meta.filter>
+        <ignoreFailureInStories>true</ignoreFailureInStories>
+        <project.build.sourceEncode>UTF-8</project.build.sourceEncode>
+        <failsafe.version>3.0.0-M5</failsafe.version>
     </properties>
 
     <dependencies>
@@ -65,7 +70,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -82,11 +86,29 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
+            <version>1.18.24</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jbehave/jbehave-maven-plugin -->
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-maven-plugin</artifactId>
+            <version>4.8.3</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>3.0.9</version>
         </dependency>
     </dependencies>
     <build>
@@ -94,6 +116,55 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jbehave</groupId>
+                <artifactId>jbehave-maven-plugin</artifactId>
+                <version>4.8.3</version>
+                <executions>
+                    <execution>
+                        <id>unpack-view-resources</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>unpack-view-resources</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>run-stories-as-embeddables</id>
+                        <phase>integration-test</phase>
+                        <configuration>
+                            <storyTimeoutInSecs>14400</storyTimeoutInSecs>
+                            <includes>
+                                <include>**/StoryRunner.java</include>
+                            </includes>
+                            <skip>${jbehave.skip.tests}</skip>
+                            <metaFilters>
+                                <metaFilter>${meta.filter}</metaFilter>
+                            </metaFilters>
+                            <systemProperties>
+                                <property>
+                                    <name>file.encoding</name>
+                                    <value>${project.build.sourceEncoding}</value>
+                                </property>
+                            </systemProperties>
+                            <ignoreFailureInStories>${ignoreFailureInStories}</ignoreFailureInStories>
+                            <ignoreFailureInView>false</ignoreFailureInView>
+                            <verboseFailures>true</verboseFailures>
+                            <verboseFiltering>false</verboseFiltering>
+                        </configuration>
+                        <goals>
+                            <goal>run-stories-as-embeddables</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy -->
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy</artifactId>
+                        <version>3.0.9</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
