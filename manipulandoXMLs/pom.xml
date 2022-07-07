@@ -133,7 +133,7 @@
                         <id>run-stories-as-embeddables</id>
                         <phase>integration-test</phase>
                         <configuration>
-                            <scope>test</scope>
+                            <scope>Runtime</scope>
                             <storyTimeoutInSecs>14400</storyTimeoutInSecs>
                             <includes>
                                 <include>**/StoryRunner.java</include>
