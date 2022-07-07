@@ -13,20 +13,23 @@ import java.io.FileReader;
 
 
 public class Deserializacao extends Steps {
+    String cnpjValidado;
+
     @Given("An existent receipt, there must be the tag CNPJ")
     public void givenAnExistentReceiptThereMustBeTheTagCNPJ() throws JAXBException, FileNotFoundException {
         JAXBContext ctEmit = JAXBContext.newInstance(NfeProc.class);
         Unmarshaller unmarshaller = ctEmit.createUnmarshaller();
 
-        /*
-         caminho da nota: D:\test\Danfe.xml
-         caminho da nota marshalled: D:\nota_teste.xml
-        */
-
         NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("nota.xml"));
 
-        Assert.assertNotNull(nfeProc.getnFe().getinfNFe().getEmit().getCNPJ());
+        cnpjValidado = nfeProc.getnFe().getinfNFe().getEmit().getCNPJ();
 
+        System.out.println("CNPJ encontrado: " + cnpjValidado);
+
+    }
+    @Then("some annotation about then step")
+    public void someName(){
+//
     }
 
 }
