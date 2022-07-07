@@ -35,7 +35,10 @@ public class StoryRunner extends ConfigurableEmbedder {
     }
     public Configuration configuration(){
         return new MostUsefulConfiguration().useStoryReporterBuilder(new StoryReporterBuilder()
-                .withDefaultFormats().withFormats(Format.CONSOLE,Format.HTML));
+                .withDefaultFormats()
+                .withFormats(Format.CONSOLE,Format.HTML)
+                .withFailureTrace(true)
+                .withFailureTraceCompression(true));
     }
 
     @Override
