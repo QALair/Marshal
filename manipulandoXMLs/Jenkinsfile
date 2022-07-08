@@ -5,7 +5,7 @@ pipeline
             stage ('Build') {
                 steps{
                     echo 'Building Spring maven project'
-                    withMaven {
+                    withMaven(maven: 'maven_3_6_3') {
                         sh 'clean install -X -Denv=stage -Dmeta.filter=groovy:!skip'
                     }
                 }
