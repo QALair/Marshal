@@ -6,7 +6,7 @@ pipeline
                 steps{
                     echo 'Building Spring maven project'
                     withMaven(maven: 'maven_3_8_1') {
-                        sh 'mvn -f manipulandoXMLs/pom.xml clean install -X -Denv=stage -Dmeta.filter=groovy:!skip'
+                        sh 'mvn -f manipulandoXMLs/pom.xml clean install -X -Denv=stage -Dmeta.filter=groovy:!skip -J --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.naming/javax.naming=ALL-UNNAMED'
                     }
                 }
             }
