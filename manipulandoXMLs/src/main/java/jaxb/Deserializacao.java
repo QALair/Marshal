@@ -20,7 +20,7 @@ public class Deserializacao extends Steps {
         JAXBContext ctEmit = JAXBContext.newInstance(NfeProc.class);
         Unmarshaller unmarshaller = ctEmit.createUnmarshaller();
 
-        NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("nota.xml"));
+        NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("manipulandoXMLs/nota.xml"));
 
         cnpjValidado = nfeProc.getnFe().getinfNFe().getEmit().getCNPJ();
 
