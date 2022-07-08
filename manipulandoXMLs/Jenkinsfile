@@ -3,9 +3,11 @@ pipeline
         agent none
         stages {
             stage ('Build') {
-                git url: 'https://github.com/QALair/Marshal'
-                withMaven {
-                    sh "mvn clean install"
+                steps{
+                    echo 'Building Spring maven project'
+                    withMaven {
+                        sh 'clean install -X -Denv=stage -Dmeta.filter=groovy:!skip'
+                    }
                 }
             }
         }
