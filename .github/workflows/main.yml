@@ -5,7 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env: 
+      JAVA_OPTS: '--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.naming/javax.naming=ALL-UNNAMED'
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
