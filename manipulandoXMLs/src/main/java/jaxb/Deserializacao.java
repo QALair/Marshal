@@ -1,9 +1,10 @@
 package jaxb;
 
-import jaxb.repository.EmitRepository;
+
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.steps.*;
-import org.junit.Assert;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -11,7 +12,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-
+@Slf4j
 public class Deserializacao extends Steps {
     String cnpjValidado;
 
@@ -23,8 +24,7 @@ public class Deserializacao extends Steps {
         NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("manipulandoXMLs/nota.xml"));
 
         cnpjValidado = nfeProc.getnFe().getinfNFe().getEmit().getCNPJ();
-
-        System.out.println("CNPJ encontrado: " + cnpjValidado);
+        log.info("CNPJ encontrado: [{}]", cnpjValidado);
 
     }
     @Then("some annotation about then step")

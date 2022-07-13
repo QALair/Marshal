@@ -1,11 +1,7 @@
-jaxb\Serializacao.class
-jaxb\Database\DatabaseService.class
 jaxb\Emit$EmitBuilder.class
 jaxb\ImprimoAlgo.class
 jaxb\controller\HelloWorld.class
 tests\TraderStories.class
-jaxb\NFe.class
-jaxb\component\AbstractComponent.class
 jaxb\Main.class
 jaxb\EmitService.class
 jaxb\Deserializacao.class
@@ -15,5 +11,10 @@ tests\TestesNotaEmpresa.class
 tests\StoryRunner.class
 jaxb\Emit.class
 jaxb\Database\StageDatabaseService.class
+jaxb\Serializacao.class
+jaxb\Database\DatabaseService.class
+jaxb\NFe.class
+jaxb\component\AbstractComponent.class
+jaxb\jbehave\LogReporter.class
 jaxb\repository\EmitRepository.class
 jaxb\InfNfe.class
