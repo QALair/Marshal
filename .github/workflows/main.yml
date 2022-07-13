@@ -13,8 +13,8 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
         env:
-          JAVA_OPTS: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.naming/javax.naming=ALL-UNNAMED
-          MAVEN_OPTS: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.naming/javax.naming=ALL-UNNAMED
+          JAVA_OPTS: "--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.naming/javax.naming=ALL-UNNAMED"
+          MAVEN_OPTS: "--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.naming/javax.naming=ALL-UNNAMED"
       - name: Build with maven
         run: mvn -f manipulandoXMLs/pom.xml clean install -X -Denv=stage -Dmeta.filter=groovy:!skip
         
