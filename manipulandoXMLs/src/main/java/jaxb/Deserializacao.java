@@ -1,6 +1,8 @@
 package jaxb;
 
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+import jaxb.board.trello.TrelloService;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.jbehave.core.annotations.*;
@@ -17,14 +19,18 @@ public class Deserializacao extends Steps {
     String cnpjValidado;
 
     @Given("An existent receipt, there must be the tag CNPJ")
-    public void givenAnExistentReceiptThereMustBeTheTagCNPJ() throws JAXBException, FileNotFoundException {
+    public void givenAnExistentReceiptThereMustBeTheTagCNPJ() throws JAXBException, FileNotFoundException, UnirestException {
         JAXBContext ctEmit = JAXBContext.newInstance(NfeProc.class);
         Unmarshaller unmarshaller = ctEmit.createUnmarshaller();
 
-        NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("manipulandoXMLs/nota.xml"));
+        NfeProc nfeProc = (NfeProc) unmarshaller.unmarshal(new FileReader("nota.xml"));
 
         cnpjValidado = nfeProc.getnFe().getinfNFe().getEmit().getCNPJ();
         log.info("CNPJ encontrado: [{}]", cnpjValidado);
+
+        // implementar a movimentação do card aqui
+        TrelloService trelloSvc = new TrelloService();
+        trelloSvc.moveCardToAnotherList("62d001942e3faf3a8e2e0868","62d001800499d46b52b16743");
 
     }
     @Then("some annotation about then step")
