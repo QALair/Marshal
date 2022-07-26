@@ -1,12 +1,17 @@
 package jaxb;
 
+import jaxb.abstractFactory.Receipt;
+import jaxb.abstractFactory.ReceiptFactory;
+import jaxb.abstractFactory.ReceiptTypeFactory;
 import jaxb.repository.EmitRepository;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class Serializacao {
     private final EmitRepository repository;
@@ -15,18 +20,24 @@ public class Serializacao {
         this.repository = repository;
     }
 
-    public static void buildMarshaller(EmitRepository repository) throws JAXBException {
+    public static void buildMarshaller(EmitRepository repository, Boolean personTypePF) throws JAXBException, FileNotFoundException {
+        String cnpj = repository.findById(1).get().getCNPJ();
+        String xnome = repository.findById(1).get().getXNome();
+        String doc = "012.345.678-90";
+        String pessoa;
 
-        JAXBContext context = JAXBContext.newInstance(NfeProc.class);
+        if (personTypePF){
+            pessoa = "PF";
+        }else{
+            pessoa = "PJ";
+            doc = cnpj;
+        }
+
+        Receipt rcp = ReceiptTypeFactory.mountReceipt(pessoa,cnpj,xnome,doc,"Algum nome","");
+
+        JAXBContext context = JAXBContext.newInstance(rcp.getNfeProc().getClass());
         Marshaller marshaller = context.createMarshaller();
 
-        Emit emitTeste = Emit.builder().CNPJ(repository.findById(1).get().getCNPJ()).xNome(repository.findById(1).get().getXNome()).build();
-
-        InfNfe infNfeTeste = new InfNfe("4.0", emitTeste);
-        NFe nfObj = new NFe(infNfeTeste);
-        NfeProc nfeProc = new NfeProc("2.0", nfObj);
-
-        marshaller.marshal(nfeProc, new File("nota.xml"));
-
+        marshaller.marshal(rcp.getNfeProc(), new File("D:/nota.xml"));
     }
 }

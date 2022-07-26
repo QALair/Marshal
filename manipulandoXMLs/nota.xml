@@ -1,1 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><nfeProc versao="2.0"><nFe><infNFe versao="4.0"><emit><CNPJ>72.186.158/0001-09</CNPJ><xNome>Razao Social aleatoria</xNome></emit></infNFe></nFe></nfeProc>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<nfeProc versao="2.0">
+    <nFe>
+        <infNFe versao="4.0">
+            <emit>
+                <CNPJ>72.186.158/0001-09</CNPJ>
+                <xNome>Razao Social aleatoria</xNome>
+            </emit>
+            <dest>
+                <CPF>012.345.678-90</CPF>
+                <xNome>adsadas</xNome>
+            </dest>
+        </infNFe>
+    </nFe>
+</nfeProc>

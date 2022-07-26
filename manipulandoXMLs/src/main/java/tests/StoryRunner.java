@@ -3,7 +3,6 @@ package tests;
 import jaxb.Deserializacao;
 import jaxb.ImprimoAlgo;
 import jaxb.jbehave.LogReporter;
-import jdk.jpackage.internal.Log;
 import org.jbehave.core.ConfigurableEmbedder;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
@@ -17,7 +16,6 @@ import org.jbehave.core.steps.InstanceStepsFactory;
 import org.junit.Test;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import java.util.LinkedList;
 import java.util.List;

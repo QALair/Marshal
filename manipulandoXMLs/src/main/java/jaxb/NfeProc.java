@@ -1,11 +1,17 @@
 package jaxb;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.jbehave.core.annotations.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.annotation.*;
 
-
+@Data
+@NoArgsConstructor
+@Builder
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "nfeProc")
 @XmlType(propOrder={"versao","nFe"})
@@ -28,13 +34,6 @@ public class NfeProc {
         this.versao = versao;
         this.nFe = nFe;
     }
-    public NfeProc(){
-    }
-
-    //TODO: Remove all unecessary comments
-    //public NfeProc(NFe nFe){
-    //    this.nFe = nFe;
-    //}
 
     @Override
     public String toString() {

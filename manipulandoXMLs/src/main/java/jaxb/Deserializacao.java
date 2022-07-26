@@ -30,7 +30,7 @@ public class Deserializacao extends Steps {
 
         // implementar a movimentação do card aqui
         TrelloService trelloSvc = new TrelloService();
-        trelloSvc.moveCardToAnotherList("62d001942e3faf3a8e2e0868","62d001800499d46b52b16743");
+        trelloSvc.moveCardToAnotherList("62d0018b4cc8a28bc398e2e5","62d001800499d46b52b16743");
 
     }
     @Then("some annotation about then step")

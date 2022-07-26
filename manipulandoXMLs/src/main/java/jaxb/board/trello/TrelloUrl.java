@@ -4,6 +4,7 @@ package jaxb.board.trello;
 import jaxb.domain.Argument;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.stereotype.Service;
 
 @Data
 @AllArgsConstructor

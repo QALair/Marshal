@@ -1,10 +1,12 @@
 package jaxb;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@AllArgsConstructor
 @XmlType(name="NFe",propOrder={"infNFe","Signature"})
 @XmlRootElement(name="NFe")
 public class NFe{

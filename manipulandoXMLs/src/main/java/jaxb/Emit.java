@@ -15,9 +15,9 @@ import javax.xml.bind.annotation.*;
 @Builder
 @Entity
 @Service
-@Table(name = "Emit")
+@Table(name = "emit")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="Emit", propOrder={"CNPJ","xNome"})
+@XmlType(name="emit", propOrder={"CNPJ","xNome"})
 @NoArgsConstructor
 public class Emit {
     @Id

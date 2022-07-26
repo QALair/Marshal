@@ -1,11 +1,19 @@
 package jaxb;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.annotation.*;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="infNFe", propOrder={"versao","ide","emit"})
+@XmlType(name="infNFe", propOrder={"versao","ide","emit", "dest"})
 @XmlRootElement(name="infNFe")
 public class InfNfe{
     @XmlElement(name="ide")
@@ -14,35 +22,15 @@ public class InfNfe{
     private Emit emit;
     @XmlAttribute(name="versao")
     private String versao = "1.0";
+    @XmlElement(name="dest",required = true)
+    private Dest dest;
 
-
-    public String getIde() {
-        return ide;
-    }
-    public void setIde(String ide) {
-        this.ide = ide;
-    }
-    public Emit getEmit() {
-        return this.emit;
-    }
-    public void setEmit(Emit emit) {
-        this.emit = emit;
-    }
-    public String getVersao() {
-        return versao;
-    }
-    public void setVersao(String versao) {
-        this.versao = versao;
-    }
     @Autowired
-    public InfNfe(String versao, Emit emit){
-      super();
-      this.versao = versao;
-      this.emit = emit;
-    }
-
-    public InfNfe(){
+    public InfNfe(String versao, Emit emit, Dest dest){
         super();
+        this.versao = versao;
+        this.emit = emit;
+        this.dest = dest;
     }
 
     @Override
@@ -50,6 +38,7 @@ public class InfNfe{
         return "InfNfe{" +
                 "ide='" + ide + '\'' +
                 ", emit=" + emit +
+                ", dest=" + dest +
                 ", versao='" + versao + '\'' +
                 '}';
     }
