@@ -1,8 +1,8 @@
 package tests;
 
-import jaxb.Deserializacao;
-import jaxb.ImprimoAlgo;
 import jaxb.jbehave.LogReporter;
+import jaxb.steps.ValidateIfThereIsACNPJTest;
+import jaxb.steps.ValidateIfThereIsARecipientNameTest;
 import org.jbehave.core.ConfigurableEmbedder;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
@@ -40,12 +40,12 @@ public class StoryRunner extends ConfigurableEmbedder {
     public Configuration configuration(){
         return new MostUsefulConfiguration().useStoryReporterBuilder(new StoryReporterBuilder().withReporters(getReporters())
                 .withDefaultFormats()
-                .withFormats(Format.CONSOLE));
+                .withFormats(Format.CONSOLE, Format.HTML));
     }
 
     @Override
     public InjectableStepsFactory stepsFactory(){
-        return new InstanceStepsFactory(configuration(), new Deserializacao(), new ImprimoAlgo());
+        return new InstanceStepsFactory(configuration(), new ValidateIfThereIsACNPJTest(), new ValidateIfThereIsARecipientNameTest());
     }
 
     protected StoryReporter[] getReporters(){

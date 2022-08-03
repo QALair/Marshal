@@ -1,5 +1,6 @@
 package jaxb;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import jaxb.repository.EmitRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,14 +14,18 @@ import java.io.FileNotFoundException;
 @SpringBootApplication
 public class Main {
 
-    public static void main(String[] args) throws JAXBException, FileNotFoundException {
+    public static void main(String[] args) throws JAXBException, FileNotFoundException, UnirestException {
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(Main.class, args);
 
         //Beans
         EmitRepository emitRepository = configurableApplicationContext.getBean(EmitRepository.class);
 
-        Serializacao objSer = new Serializacao(emitRepository);
-        objSer.buildMarshaller(emitRepository, false);
+        //Serializacao objSer = new Serializacao(emitRepository);
+        //objSer.buildMarshaller(emitRepository, false);
+
+        //Marshall objNfe = new Marshall(emitRepository);
+        //objNfe.buildMarshaller(emitRepository, false);
+        //objNfe.buildUnmarshaller();
 
     }
 }

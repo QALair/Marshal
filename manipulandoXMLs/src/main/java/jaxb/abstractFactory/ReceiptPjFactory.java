@@ -8,8 +8,8 @@ import javax.xml.bind.JAXBException;
 public class ReceiptPjFactory implements ReceiptFactory{
 
     @Override
-    public Emit buildEmit(String nome, String doc) {
-        Emit buildEmit = new Emit(nome,doc);
+    public Emit buildEmit(String doc, String nome) {
+        Emit buildEmit = new Emit(doc, nome);
         return buildEmit;
     }
 

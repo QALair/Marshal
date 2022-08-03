@@ -18,7 +18,7 @@ public interface ReceiptTypeFactory {
                 rcp.setDest(new Dest(docDest,nomeDest,fantasiaDest));
                 break;
         }
-        rcp.setEmit(rf.buildEmit(nomeEmit,cnpjEmit));
+        rcp.setEmit(rf.buildEmit(cnpjEmit, nomeEmit));
         rcp.setInfNfe(rf.buildInfNfe("1.1", rcp.getEmit(), rcp.getDest()));
         rcp.setNFe(rf.buildNfe(rcp.getInfNfe(),"a"));
         rcp.setNfeProc(rf.buildNfeProc("1",rcp.getNFe()));
